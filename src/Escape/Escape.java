@@ -14,8 +14,8 @@ public class Escape extends JFrame {
     private void initUI() {
 
         add(new Board());
-        setSize(330, 330);
-        setTitle("Bardejov");
+        setSize(800, 600);
+        setTitle("Escape");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }

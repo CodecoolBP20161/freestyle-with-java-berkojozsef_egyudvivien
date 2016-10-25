@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel {
 
-    private Image bardejov;
+    private Image playerImage;
 
     public Board() {
 
@@ -19,21 +19,21 @@ public class Board extends JPanel {
 
         loadImage();
 
-        int w = bardejov.getWidth(this);
-        int h =  bardejov.getHeight(this);
+        int w = playerImage.getWidth(this);
+        int h =  playerImage.getHeight(this);
         setPreferredSize(new Dimension(w, h));
     }
 
     private void loadImage() {
 
-        ImageIcon ii = new ImageIcon("images/player.png");
-        bardejov = ii.getImage();
+        ImageIcon ii = new ImageIcon("images/player1.png");
+        playerImage = ii.getImage();
     }
 
     @Override
     public void paintComponent(Graphics g) {
 
-        g.drawImage(bardejov, 30, 30, null);
+        g.drawImage(playerImage, 30, 30, null);
     }
 }
 
