@@ -1,7 +1,7 @@
 package Escape;
 
 
-import java.awt.EventQueue;
+import java.awt.*;
 import javax.swing.JFrame;
 
 public class Escape extends JFrame {
@@ -18,6 +18,8 @@ public class Escape extends JFrame {
         setTitle("Escape");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+
     }
 
     public static void main(String[] args) {
@@ -27,6 +29,7 @@ public class Escape extends JFrame {
             @Override
             public void run() {
                 Escape ex = new Escape();
+
                 ex.setVisible(true);
             }
         });
