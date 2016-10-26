@@ -1,7 +1,6 @@
 package Escape;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 class Board extends JPanel {

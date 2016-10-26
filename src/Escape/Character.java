@@ -1,5 +1,4 @@
 package Escape;
-
 import java.awt.*;
 
 class Character {
