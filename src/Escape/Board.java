@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
-public class Board extends JPanel {
+class Board extends JPanel {
     private int centerX;
     private int centerY;
     private Player player;
