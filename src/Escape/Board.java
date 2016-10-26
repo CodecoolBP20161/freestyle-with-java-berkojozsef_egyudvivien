@@ -1,6 +1,7 @@
 package Escape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -11,12 +12,14 @@ public class Board extends JPanel {
     protected Thread thread;
 
     public Board() {
+
         this.thread = new Thread();
         initBoard();
         thread.start();
     }
 
     private void initBoard() {
+
         setBackground(Color.green);
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int centerX = gd.getDisplayMode().getWidth() / 2;
@@ -24,8 +27,6 @@ public class Board extends JPanel {
         Image playerImage = loadImage("images/player1.png");
         Player hedgeHog = new Player(centerX, centerY , playerImage);
         this.player = hedgeHog;
-
-
 
     }
 
@@ -35,20 +36,26 @@ public class Board extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-       super.paintComponent(g);
-       Character player = this.player;
+        super.paintComponent(g);
+        Character player = this.player;
         player.move();
-        g.drawImage(player.image, player.getX(), player.getY(), null);
 
-//        System.out.println("Mouse: x, y: " + MouseInfo.getPointerInfo().getLocation().x  + "," + MouseInfo.getPointerInfo().getLocation().y);
-//        System.out.println("player: x, y" + (player.getCenterX()) + "," + (player.getCenterY()));
-        // Comment this out if you dont want an infinite loop!
+        // Rotation towards mouse
+        Graphics2D gr = (Graphics2D)g;
+        int mouseX  = MouseInfo.getPointerInfo().getLocation().x;
+        int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+
+        double angle = Math.atan2(player.getCenterY() - mouseY, player.getCenterX() - mouseX) - Math.PI / 2;
+        gr.translate(player.getCenterX()+player.getX(), player.getCenterY()+player.getY());
+        gr.rotate(angle);
+        gr.translate(-player.getCenterX(), -player.getCenterY());
+        gr.drawImage(player.image, player.getX(), player.getY(), null);
+        //-------------------------------------------------------------------------------------------------
         repaint();
         Toolkit.getDefaultToolkit().sync();
         try {
             Thread.sleep(5);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -62,21 +62,23 @@ public class Character {
         }
         @Override
         public void move(){
-            if (MouseInfo.getPointerInfo().getLocation().x > this.centerX){
+            int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+            int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+            if (mouseX > this.centerX){
                 this.x += 1;
                 this.centerX += 1;
             }
-            else if (MouseInfo.getPointerInfo().getLocation().x < this.centerX){
+            else if (mouseX < this.centerX){
                 this.x -= 1;
                 this.centerX -= 1;
 
             }
 
-            if (MouseInfo.getPointerInfo().getLocation().y > this.centerY){
+            if (mouseY > this.centerY){
                 this.y += 1;
                 this.centerY += 1;
             }
-            else if (MouseInfo.getPointerInfo().getLocation().y < this.centerY){
+            else if (mouseY < this.centerY){
                 this.y -= 1;
                 this.centerY -= 1;
             }
@@ -84,6 +86,9 @@ public class Character {
 
     class Enemy extends Character{
 
+        public Enemy(int x, int y, Image img){
+            super.Character(x, y, img);
+        }
 
         @Override
         public void move(){
