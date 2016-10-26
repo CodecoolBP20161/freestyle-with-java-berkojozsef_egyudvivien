@@ -9,15 +9,21 @@ public class Escape extends JFrame {
     public Escape() {
 
         initUI();
+
+
     }
 
     private void initUI() {
-
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
         add(new Board());
-        setSize(800, 600);
+        setSize(width - 10, height - 10);
         setTitle("Escape");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBackground(Color.green);
         setLocationRelativeTo(null);
+
 
 
     }
@@ -29,7 +35,6 @@ public class Escape extends JFrame {
             @Override
             public void run() {
                 Escape ex = new Escape();
-
                 ex.setVisible(true);
             }
         });
